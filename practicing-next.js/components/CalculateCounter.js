@@ -7,6 +7,7 @@ const CalculateCounter = () => {
     <div>
       <h2 className="text-7xl font-bold mb-4">{count}</h2>
       <button onClick={() => setCount(count + 1)}>Increase</button>
+      <button onClick={() => setCount(count - 1)}>Decrease</button>
     </div>
   );
 };
