@@ -1,6 +1,6 @@
 import React from "react";
 
-const url = "https://www.thecocktaildb.com/api/json/v1/1/searc";
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=z";
 
 const Bar = async () => {
   const response = await fetch(url);
