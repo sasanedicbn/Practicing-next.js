@@ -2,8 +2,7 @@ import React from "react";
 
 export default function BarLayout({ children }) {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-100 via-amber-50 to-white">
-      {/* Header Section */}
+    <div className="min-h-screen flex flex-col  from-blue-100 via-amber-50 to-white">
       <header className="bg-amber-300 shadow-md p-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold text-gray-800 tracking-wide">
           🍸 Bar Zone
@@ -13,7 +12,6 @@ export default function BarLayout({ children }) {
         </button>
       </header>
 
-      {/* Hero Image */}
       <div
         className="h-64 bg-cover bg-center rounded-b-3xl shadow-inner"
         style={{
@@ -29,10 +27,8 @@ export default function BarLayout({ children }) {
         </div>
       </div>
 
-      {/* Main content */}
       <main className="flex-1 max-w-5xl mx-auto w-full p-8">{children}</main>
 
-      {/* Footer */}
       <footer className="bg-amber-200 text-center py-4 mt-auto text-gray-700">
         © {new Date().getFullYear()} Bar Zone — All rights reserved.
       </footer>
