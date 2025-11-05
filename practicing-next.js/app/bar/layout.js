@@ -20,7 +20,7 @@ export default function BarLayout({ children }) {
         }}
       >
         <div className="h-full w-full bg-black/40 flex flex-col items-center justify-center text-center text-white">
-          <h2 className="text-4xl font-bold drop-shadow-md">
+          <h2 className="text-3xl font-bold drop-shadow-md">
             Welcome to the Bar
           </h2>
           <p className="text-lg mt-2">Discover your favorite cocktails 🍹</p>
