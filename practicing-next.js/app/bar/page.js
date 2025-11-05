@@ -1,3 +1,4 @@
+import DrinkList from "@/components/DrinkList";
 import React from "react";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?f=z";
@@ -10,7 +11,7 @@ const Bar = async () => {
   const data = await response.json();
   console.log(data);
 
-  return <div>Bar</div>;
+  return <DrinkList drinks={data.drinks} />;
 };
 
 export default Bar;
