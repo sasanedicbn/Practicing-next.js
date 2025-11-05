@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 export default function BarLayout({ children }) {
@@ -7,6 +8,16 @@ export default function BarLayout({ children }) {
         <h1 className="text-2xl font-bold text-gray-800 tracking-wide">
           🍸 Bar Zone
         </h1>
+        {/* <img
+          src="https://www.univerzalno.com/uploads/images/img-00835059_1749067865.gif"
+          alt="Cocktail Glass"
+          className="w-80 h-60"
+        /> */}
+        <Image
+          src="https://www.univerzalno.com/uploads/images/img-00835059_1749067865.gif"
+          width={320}
+          height={320}
+        />
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition duration-200">
           Add Cocktail
         </button>
