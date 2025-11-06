@@ -1,8 +1,9 @@
 import React from "react";
 
-const page = () => {
-  const { id } = parseAppSegmentConfig;
-  return <div></div>;
+const page = async ({ params }) => {
+  const { id } = await params;
+  console.log(id);
+  return <div>id singe</div>;
 };
 
 export default page;
