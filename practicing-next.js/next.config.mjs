@@ -10,6 +10,12 @@ const nextConfig = {
         port: "",
         pathname: "/uploads/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.thecocktaildb.com",
+        port: "",
+        pathname: "/images/**",
+      },
     ],
   },
 };
