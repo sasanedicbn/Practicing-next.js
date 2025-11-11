@@ -1,7 +1,9 @@
-import React from "react";
-
-const Query = () => {
-  return <div>Query</div>;
+const Query = async () => {
+  return (
+    <div>
+      <h1>Quey</h1>
+    </div>
+  );
 };
 
 export default Query;
