@@ -1,4 +1,5 @@
 import React from "react";
+import { delteTask } from "@/app/actions/todoActions.js";
 
 const TodoList = ({ tasks }) => {
   return (
@@ -25,7 +26,14 @@ const TodoList = ({ tasks }) => {
             <button className="text-yellow-400 cursor-pointer ml-auto">
               Update
             </button>
-            <button className="text-red-500 cursor-pointer ml-3">Delete</button>
+            <form action={() => delteTask(task.id)}>
+              <button
+                className="text-red-500 cursor-pointer ml-3"
+                type="submit"
+              >
+                Delete
+              </button>
+            </form>
           </div>
         ))}
       </ul>
