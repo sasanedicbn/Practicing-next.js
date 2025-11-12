@@ -1,6 +1,6 @@
 import React from "react";
 import TodoInput from "./TodoInput";
-import TodoList from "@/app/todo list/page";
+import TodoListServer from "./TodoListServer";
 
 const TodoForm = () => {
   return (
@@ -11,11 +11,10 @@ const TodoForm = () => {
         </h1>
         <TodoInput />
         <div className="border-t border-gray-700 my-4"></div>
-        {/* <div className="max-h-[400px] overflow-y-auto custom-scrollbar">
-          <TodoList />
-        </div> */}
+        <div className="max-h-[400px] overflow-y-auto custom-scrollbar">
+          <TodoListServer />
+        </div>
       </div>
-      <p>to do form</p>
     </div>
   );
 };
