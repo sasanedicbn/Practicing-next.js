@@ -9,20 +9,25 @@ const TodoList = ({ tasks }) => {
 
       <ul className="space-y-3">
         {tasks.map((task) => (
-          <li
+          <div
+            className="flex  items-center bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition"
             key={task.id}
-            className="flex justify-between items-center bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition"
           >
-            <span
-              className={`${
-                task.completed ? "line-through text-gray-500" : ""
-              }`}
-            >
-              {task.content}
-            </span>
-          </li>
+            <li key={task.id}>
+              <span
+                className={`${
+                  task.completed ? "line-through text-gray-500" : ""
+                }`}
+              >
+                {task.content}
+              </span>
+            </li>
+            <button className="text-yellow-400 cursor-pointer ml-auto">
+              Update
+            </button>
+            <button className="text-red-500 cursor-pointer ml-3">Delete</button>
+          </div>
         ))}
-        <p>Tralalala</p>
       </ul>
     </div>
   );
