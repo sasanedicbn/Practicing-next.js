@@ -1,7 +1,10 @@
-import React from "react";
-import { delteTask } from "@/app/actions/todoActions.js";
+"use client";
 
 const TodoList = ({ tasks }) => {
+  const handleDelete = async (id) => {
+    await fetch(`/api/todos/${id}`, { method: "DELETE" });
+    // refresh state ili mutate
+  };
   return (
     <div className="bg-gray-900 text-gray-100 p-6 rounded-2xl shadow-lg w-full max-w-md mx-auto mt-6">
       <h2 className="text-xl font-semibold mb-4 text-indigo-400 text-center">
@@ -26,14 +29,13 @@ const TodoList = ({ tasks }) => {
             <button className="text-yellow-400 cursor-pointer ml-auto">
               Update
             </button>
-            <form action={() => delteTask(task.id)}>
-              <button
-                className="text-red-500 cursor-pointer ml-3"
-                type="submit"
-              >
-                Delete
-              </button>
-            </form>
+            <button
+              className="text-red-500 cursor-pointer ml-3"
+              type="submit"
+              onClick={() => handleDelete(task.id)}
+            >
+              Delete
+            </button>
           </div>
         ))}
       </ul>

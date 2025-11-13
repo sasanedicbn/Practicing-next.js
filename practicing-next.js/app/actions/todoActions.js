@@ -1,11 +1,8 @@
-"use server";
-import prisma from "@/utils/db.ts";
+import prisma from "@/utils/db";
 
-export const delteTask = async (req, { params }) => {
-  const id = params.id;
-  await prisma.task.delete({
-    where: {
-      id: id,
-    },
-  });
-};
+export async function DELETE(req, { params }) {
+  console.log(params.id, "id koji dolazi");
+  const id = Number(params.id);
+  await prisma.task.delete({ where: { id } });
+  return new Response(JSON.stringify({ success: true }));
+}
