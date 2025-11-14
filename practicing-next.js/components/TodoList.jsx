@@ -1,15 +1,16 @@
 "use client";
 import { deleteTask } from "@/app/actions/todoActions";
+import Link from "next/link";
 // import { useRouter } from "next/navigation";
 
 const TodoList = ({ tasks }) => {
   // const router = useRouter();
 
-  const handleDelete = async (id) => {
-    // console.log("Deleting task with id:", id);
-    await deleteTask(id);
-    router.refresh();
-  };
+  // const handleDelete = async (id) => {
+  //   // console.log("Deleting task with id:", id);
+  //   await deleteTask(id);
+  //   router.refresh();
+  // };
   // console.log("task id:", tasks);
 
   return (
@@ -33,23 +34,12 @@ const TodoList = ({ tasks }) => {
                 {task.content}
               </span>
             </li>
-            <button
-              onClick={() => handleDelete(task.id)}
+            <Link
+              href={`/prisma/${task.id}`}
               className="text-yellow-400 cursor-pointer ml-auto"
             >
-              Delete
-            </button>
-            {/* <button
-              className="text-red-500 cursor-pointer ml-3"
-              type="submit"
-              onClick={() => handleDelete(task.id)}
-            >
-              Delete
-            </button> */}
-            {/* <form action={deleteTask}>
-              <input type="hidden" name="id" value={task.id} />
-              <button className="text-red-500 ml-3">Delete</button>
-            </form> */}
+              Details
+            </Link>
           </div>
         ))}
       </ul>
