@@ -1,17 +1,25 @@
 "use client";
-import { deleteTask } from "@/app/actions/todoActions";
-import Link from "next/link";
-// import { useRouter } from "next/navigation";
+
+import { useRouter } from "next/navigation";
 
 const TodoList = ({ tasks }) => {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const handleDelete = async (id) => {
-  //   // console.log("Deleting task with id:", id);
-  //   await deleteTask(id);
-  //   router.refresh();
-  // };
-  // console.log("task id:", tasks);
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`/api/prisma/${id}`, { method: "DELETE" });
+      const data = await res.json();
+
+      if (!res.ok) {
+        console.error(data.error || "Something went wrong");
+        return;
+      }
+
+      router.refresh(); // osvježava server-side listu zadataka
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="bg-gray-900 text-gray-100 p-6 rounded-2xl shadow-lg w-full max-w-md mx-auto mt-6">
@@ -21,26 +29,24 @@ const TodoList = ({ tasks }) => {
 
       <ul className="space-y-3">
         {tasks.map((task) => (
-          <div
-            className="flex  items-center bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition"
+          <li
             key={task.id}
+            className="flex items-center bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition"
           >
-            <li key={task.id}>
-              <span
-                className={`${
-                  task.completed ? "line-through text-gray-500" : ""
-                }`}
-              >
-                {task.content}
-              </span>
-            </li>
-            <Link
-              href={`/prisma/${task.id}`}
-              className="text-yellow-400 cursor-pointer ml-auto"
+            <span
+              className={`${
+                task.completed ? "line-through text-gray-500" : ""
+              }`}
             >
-              Details
-            </Link>
-          </div>
+              {task.content}
+            </span>
+            <button
+              className="text-red-500 ml-auto cursor-pointer"
+              onClick={() => handleDelete(task.id)}
+            >
+              Delete
+            </button>
+          </li>
         ))}
       </ul>
     </div>
