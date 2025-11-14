@@ -1,10 +1,17 @@
 "use client";
+import { deleteTask } from "@/app/actions/todoActions";
+// import { useRouter } from "next/navigation";
 
 const TodoList = ({ tasks }) => {
+  // const router = useRouter();
+
   const handleDelete = async (id) => {
-    await fetch(`/api/todos/${id}`, { method: "DELETE" });
-    // refresh state ili mutate
+    // console.log("Deleting task with id:", id);
+    await deleteTask(id);
+    router.refresh();
   };
+  // console.log("task id:", tasks);
+
   return (
     <div className="bg-gray-900 text-gray-100 p-6 rounded-2xl shadow-lg w-full max-w-md mx-auto mt-6">
       <h2 className="text-xl font-semibold mb-4 text-indigo-400 text-center">
@@ -26,16 +33,23 @@ const TodoList = ({ tasks }) => {
                 {task.content}
               </span>
             </li>
-            <button className="text-yellow-400 cursor-pointer ml-auto">
-              Update
-            </button>
             <button
+              onClick={() => handleDelete(task.id)}
+              className="text-yellow-400 cursor-pointer ml-auto"
+            >
+              Delete
+            </button>
+            {/* <button
               className="text-red-500 cursor-pointer ml-3"
               type="submit"
               onClick={() => handleDelete(task.id)}
             >
               Delete
-            </button>
+            </button> */}
+            {/* <form action={deleteTask}>
+              <input type="hidden" name="id" value={task.id} />
+              <button className="text-red-500 ml-3">Delete</button>
+            </form> */}
           </div>
         ))}
       </ul>
