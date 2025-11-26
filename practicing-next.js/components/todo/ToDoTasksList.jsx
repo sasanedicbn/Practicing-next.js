@@ -1,4 +1,4 @@
-const ToDoTasksList = ({ tasks, onDelete }) => {
+const ToDoTasksList = ({ tasks, onDelete, onUpdate }) => {
   return (
     <div className="w-2/5 mt-4 bg-gray-800">
       {tasks.length === 0 ? (
@@ -11,7 +11,12 @@ const ToDoTasksList = ({ tasks, onDelete }) => {
                 {task}
               </div>
               <div className="text-white ml-auto flex gap-4 align-center m-2 ">
-                <button className="cursor-pointer">Update</button>
+                <button
+                  className="cursor-pointer"
+                  onClick={() => onUpdate(index)}
+                >
+                  Update
+                </button>
                 <button
                   onClick={() => onDelete(index)}
                   className="cursor-pointer"
