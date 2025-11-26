@@ -1,21 +1,20 @@
 "use client";
-
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const TodoList = ({ tasks }) => {
-  const router = useRouter();
+  const [localTasks, setLocalTasks] = useState(tasks);
 
   const handleDelete = async (id) => {
+    setLocalTasks((prev) => prev.filter((task) => task.id !== id));
+
     try {
       const res = await fetch(`/api/prisma/${id}`, { method: "DELETE" });
-      const data = await res.json();
 
       if (!res.ok) {
-        console.error(data.error || "Something went wrong");
-        return;
-      }
+        throw new Error("Delete failed");
 
-      router.refresh(); // osvježava server-side listu zadataka
+        setLocalTasks(tasks);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -28,7 +27,7 @@ const TodoList = ({ tasks }) => {
       </h2>
 
       <ul className="space-y-3">
-        {tasks.map((task) => (
+        {localTasks.map((task) => (
           <li
             key={task.id}
             className="flex items-center bg-gray-800 p-3 rounded-lg hover:bg-gray-700 transition"

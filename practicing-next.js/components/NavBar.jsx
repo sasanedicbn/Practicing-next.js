@@ -1,9 +1,10 @@
 const Links = [
   { name: "Bar", path: "/bar" },
   { name: "Counter", path: "/counter" },
-  { name: "Todo List", path: "/todolist" },
+  { name: "todo", path: "/todo" },
   { name: "Query", path: "/query" },
   { name: "Prisma", path: "/prisma" },
+  { name: "Practice", path: "/practice" },
 ];
 
 import Link from "next/link";

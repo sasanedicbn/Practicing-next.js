@@ -1,6 +1,6 @@
-import prisma from "@/utils/db";
+import prisma from "@/utils/db.ts";
 
-export async function DELETE(req, { params }) {
+export async function DELETE({ params }) {
   const { id } = await params;
 
   if (!id) {
@@ -10,7 +10,7 @@ export async function DELETE(req, { params }) {
   }
 
   try {
-    await prisma.task.delete({ where: { id } }); // ako je UUID tip u bazi
+    await prisma.task.delete({ where: { id } });
     return new Response(JSON.stringify({ success: true }));
   } catch (err) {
     return new Response(JSON.stringify({ error: err.message }), {

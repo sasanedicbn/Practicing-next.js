@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import TodoInput from "./TodoInput";
 import TodoListServer from "./TodoListServer";
